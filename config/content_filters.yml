@@ -1,0 +1,37 @@
+news.ycombinator.com:
+  - 'table.fatitem p'
+fasterthanli.me:
+  selector: 'div.content .markdown'
+acrossapp.com:
+  selector: 'div.post__content'
+www.esri.com:
+  - 'div.grid-container p'
+www.indiehackers.com:
+  selector: 'div.post-page__main > div.post-page__body'
+technology.blog.gov.uk:
+  selector: 'article > div.entry-content'
+pattle.github.io:
+  selector: 'div.container div.col-md-3'
+www.worldometers.info:
+  selector: 'div.content-inner'
+www.bbc.com:
+  - 'div.story-body__inner p'
+profithunt.co:
+  selector: 'div.container'
+github.com:
+  selector: 'div.Box-body > article'
+edition.cnn.com:
+  - 'div.zn-body__paragraph'
+www.geoffreylitt.com:
+  selector: 'body'
+www.anandtech.com:
+  selector: 'div.articleContent'
+www.reddit.com:
+  - 'div[data-test-id="post-content"] p'
+businessfinancing.co.uk:
+  - 'div.entry-content p'
+  - 'div.entry-content h2'
+  - 'div.entry-content ul'
+  - 'div.entry-content table'
+shkspr.mobi:
+  selector: 'article > .entry-content'
