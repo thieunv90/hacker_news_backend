@@ -73,8 +73,8 @@ class HackerNewsParserService
       post = Post.new(attributes)
 
       # Crawl cover image
-      post_detail_response = HTTParty.get(post.url)
-      post.cover_image = parse_cover_image(Nokogiri::HTML(post_detail_response.body))
+      post_detail_response = HTTParty.get(post.url) rescue nil
+      post.cover_image = parse_cover_image(Nokogiri::HTML(post_detail_response.body)) if post_detail_response
 
       post
     end
