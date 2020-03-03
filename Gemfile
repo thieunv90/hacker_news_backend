@@ -5,7 +5,7 @@ ruby '2.7.0'
 
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'sqlite3', '~> 1.4'
-gem 'puma', '~> 4.1'
+gem 'puma'
 gem 'nokogiri'
 gem 'ruby-readability', require: 'readability'
 gem 'active_model_serializers', '~> 0.10.10'
