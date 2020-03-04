@@ -80,6 +80,7 @@ RSpec.describe HackerNewsParserService do
 
     before do
       allow(HTTParty).to receive(:get).and_return(specific_news_response)
+      allow_any_instance_of(Post).to receive(:remote_file_exists?).and_return(true)
     end
 
     it 'fetches the html content from hackes new page' do

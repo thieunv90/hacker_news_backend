@@ -48,5 +48,7 @@ class Post
   def remote_file_exists?(image_url)
     response = HTTParty.get(image_url)
     response.code == 200 && response.headers['Content-Type'].start_with?('image')
+  rescue StandardError => e
+    return false
   end
 end
