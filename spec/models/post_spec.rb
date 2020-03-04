@@ -26,7 +26,7 @@ RSpec.describe Post, type: :model do
       let(:url) { '/example' }
 
       it 'returns full url' do
-        expect(subject).to eq (Post::INTERNAL_URL + url)
+        expect(subject).to eq (Post::HACKER_NEWS_URL + url)
       end
     end
   end
@@ -48,8 +48,20 @@ RSpec.describe Post, type: :model do
     context 'when cover_image contains http/https' do
       let(:cover_image) { 'http://example.com/image.png' }
 
-      it 'returns itself' do
-        expect(subject).to eq cover_image
+      context 'but that cover_image file is not exists' do
+        it 'returns nil' do
+          allow(post).to receive(:remote_file_exists?).and_return(false)
+
+          expect(subject).to eq nil
+        end
+      end
+
+      context 'and cover_image file is exists' do
+        it 'returns cover_image full url itself' do
+          allow(post).to receive(:remote_file_exists?).and_return(true)
+
+          expect(subject).to eq cover_image
+        end
       end
     end
 
@@ -60,6 +72,8 @@ RSpec.describe Post, type: :model do
         let(:url) { 'http://example.com/post.html' }
 
         it 'returns full cover_image url with the same host' do
+          allow(post).to receive(:remote_file_exists?).and_return(true)
+
           expect(subject).to eq 'http://example.com//image.png'
         end
       end

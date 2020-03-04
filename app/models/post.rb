@@ -3,7 +3,7 @@ class Post
   extend ActiveModel::Naming
 
   URL_REGEX = /https?:\/\/[\S]+/
-  INTERNAL_URL = 'https://news.ycombinator.com/'
+  HACKER_NEWS_URL = 'https://news.ycombinator.com/'
 
   attr_reader :title, :url, :site_name, :sub_text, :content, :cover_image, :description
   attr_writer :cover_image
@@ -22,7 +22,7 @@ class Post
     return unless @url
 
     unless @url.match(URL_REGEX)
-      INTERNAL_URL + @url
+      HACKER_NEWS_URL + @url
     else
       @url
     end
@@ -31,11 +31,22 @@ class Post
   def cover_image
     return unless @cover_image
 
-    if url && !@cover_image.match(URL_REGEX)
-      uri = URI(url)
-      "#{uri.scheme}://#{uri.host}/" + @cover_image
-    else
-      @cover_image
-    end
+    full_url = if url && !@cover_image.match(URL_REGEX)
+                  uri = URI(url)
+                  "#{uri.scheme}://#{uri.host}/" + @cover_image
+                else
+                  @cover_image
+                end
+
+    return if !remote_file_exists?(full_url)
+
+    full_url
+  end
+
+  private
+
+  def remote_file_exists?(image_url)
+    response = HTTParty.get(image_url)
+    response.code == 200 && response.headers['Content-Type'].start_with?('image')
   end
 end

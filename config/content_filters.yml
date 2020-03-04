@@ -16,8 +16,6 @@ www.worldometers.info:
   selector: 'div.content-inner'
 www.bbc.com:
   - 'div.story-body__inner p'
-profithunt.co:
-  selector: 'div.container'
 github.com:
   selector: 'div.Box-body > article'
 edition.cnn.com:
