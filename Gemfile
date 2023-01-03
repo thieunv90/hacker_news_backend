@@ -9,7 +9,7 @@ gem 'puma'
 gem 'nokogiri'
 gem 'ruby-readability', require: 'readability'
 gem 'active_model_serializers', '~> 0.10.10'
-gem 'httparty', '0.18.0'
+gem 'httparty', '0.21.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
